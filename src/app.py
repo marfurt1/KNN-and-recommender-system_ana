@@ -80,7 +80,7 @@ movies['keywords'] = movies['keywords'].apply(collapse)
 #We will reduce our dataset by combining all our previous converted columns into only one column named 'tags' (which we will create). This column will now have ALL items separated by commas, but we will ignore commas by using lambda x :" ".join(x).
 movies['tags'] = movies['overview']+movies['genres']+movies['keywords']+movies['cast']+movies['crew']
 new_df = movies[['movie_id','title','tags']]
-#new_df['tags'] = new_df['tags'].apply(lambda x :" ".join(x))
+new_df['tags'] = new_df['tags'].apply(lambda x :" ".join(x))
 
 #We will use KNN algorithm to build the recommender system. Before entering the model let's proceed with the text vectorization which you already learned in the NLP lesson.
 from sklearn.feature_extraction.text import CountVectorizer
